@@ -1,0 +1,11 @@
+M. A.  Khan and Yoshio Ohno, "An Automated Video Data Compression Algorithm by Cardinal Spline Fitting". NICOGRAPH International Conference, Toyota, Japan, May 2007.
+------------------------------------------------------------
+Bibtex entry
+
+@inproceedings{KhanOhnoNICOGRAPH2007,
+  author    = {M. A.  Khan and Yoshio Ohno},
+  title     = {An Automated Video Data Compression Algorithm by Cardinal Spline Fitting},
+  booktitle = {NICOGRAPH International Conference, Toyota, Japan},  
+  year      = {2007},
+  month = {May},  
+}
