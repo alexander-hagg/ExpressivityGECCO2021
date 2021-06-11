@@ -1,11 +1,10 @@
 function [map, percImproved, percValid, allMaps, percFilled, stats] = illuminate(map,p,d,varargin)
-%illuminate - QD with Voronoi Multi-dimensional Archive of Phenotypic Elites algorithm
+%illuminate - QD with Voronoi Elites algorithm
 %
-% Syntax:  [map, percImproved, percValid, h, allMaps, percFilled] = illuminate(d.fitfun,map,p,d,varargin)
+% Syntax:  [map, percImproved, percValid, allMaps, percFilled, stats] = illuminate(map,p,d,varargin)
 %
 % Inputs:
-%   d.fitfun - funct  - returns fitness of vector of individuals
-%   map             - struct - initial solutions in F-dimensional map
+%   map             - struct - Map with initial solutions
 %   p               - struct - Hyperparameters for algorithm, visualization, and data gathering
 %   d               - struct - Domain definition
 %
@@ -13,9 +12,9 @@ function [map, percImproved, percValid, allMaps, percFilled, stats] = illuminate
 %   map             - struct - population archive
 %   percImproved    - percentage of children which improved on elites
 %   percValid       - percentage of children which are valid members of selected classes
-%   h               - [1X2]  - axes handle, data handle
-%   allMap          - all maps created in sequence
+%   allMaps         - all maps created in sequence
 %   percFilled      - percentage of map filled
+%   stats           - other statistics
 %
 %
 % See also: createChildren, getBestPerCell, updateMap
@@ -29,7 +28,6 @@ function [map, percImproved, percValid, allMaps, percFilled, stats] = illuminate
 % View Initial Map
 
 percImproved = 0;   percValid = 0;  h = 0;  percFilled = 0;
-%figure(1);ax = gca;
 stats = [];
 iGen = 1;
 while (iGen <= p.nGens)
@@ -77,7 +75,6 @@ while (iGen <= p.nGens)
     iGen = iGen+1;
     
 end
-%if percImproved(end) > 0.05; disp('Warning: MAP-Elites finished while still making improvements ( >5% / generation )');end
 end
 
 

@@ -6,7 +6,7 @@ function [bitmaps,figHandle] = showPhenotypeBMP(input,d,varargin)
 % Syntax:   showPhenotype(genomes,d,varargin)
 %
 % Inputs:
-%    figHandle      - [1] - figure handle
+%    input          
 %    d              - struct - Domain description struct
 %
 % Optional Inputs:

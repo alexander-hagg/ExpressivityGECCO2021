@@ -1,19 +1,21 @@
-function [replaced, replacement, features, percImprovement] = nicheCompete(newInds,fitness,map,d,p,features)
+function [replaced, replacement, features, percImprovement] = nicheCompete(genes,fitness,map,d,p,features)
 %nicheCompete - results of competition with map's existing elites
 %
-% Syntax:  [replaced, replacement, features, percImprovement] = nicheCompete(newInds,fitness,map,d,p,varargin)
+% Syntax:  [replaced, replacement, features, percImprovement] = nicheCompete(genes,fitness,map,d,p,features)
 %
 % Inputs:
-%   newInds - [NXM]     - New population to compete for niches
-%   fitness - [NX1]     - Fitness values fo new population
-%   map     - struct    - Population archive
-%   d       - struct    - Domain definition
-%   p       - struct    - QD configuration
+%   genes    - [NXM]     - OBSOLETE (Compatibility)
+%   fitness  - [NX1]     - Fitness values fo new population
+%   map      - struct    - Population archive
+%   d        - struct    - Domain definition
+%   p        - struct    - QD configuration
+%   features - [NxF]     - Features
 %
 % Outputs:
-%   replaced    - [NX1] - Linear index of map cells to recieve replacements
-%   replacement - [NX1] - Index of newInds to replace current elites in niche
-%   features    - [NxNumFeatures] - return features
+%   replaced        - [NX1] - Linear index of map cells to recieve replacements
+%   replacement     - [NX1] - Index of newInds to replace current elites in niche
+%   features        - [NxF] - return features
+%   percImprovement - [1]   - OBSOLETE (Compatibility)
 %
 %
 % Other m-files required: getBestPerCell.m

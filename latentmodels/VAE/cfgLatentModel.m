@@ -1,5 +1,5 @@
 function model = cfgLatentModel(workDir,resolution, varargin)
-%CFGLATENTMODEL cfguration of Variational Autoencoder
+%CFGLATENTMODEL confguration of Variational Autoencoder
 %
 % Author: Alexander Hagg
 % Bonn-Rhein-Sieg University of Applied Sciences (HBRS)
@@ -8,11 +8,11 @@ function model = cfgLatentModel(workDir,resolution, varargin)
 %
 %------------- BEGIN CODE --------------
 
-lossFunction                  = 'beta_annealing'; % OPTIONS: 'tcbeta' 'beta' 'beta_annealing'
+lossFunction                  = 'beta_annealing';
 disp(['VAE with loss function: ' lossFunction]);
 rmpath(genpath('latentmodels/VAE/lossFunctions')); addpath(genpath(['latentmodels/VAE/lossFunctions/loss_' lossFunction]));
 mkdir(workDir);
-structure                           = 'convDefault_nodropout_larger'; %convDefault_dropout convDefault_nodropout convDefault_nodropout_larger
+structure                           = 'convDefault_nodropout_larger'; 
 
 configuration.latentDim             = 2;
 if nargin > 2
@@ -20,7 +20,7 @@ if nargin > 2
     disp(['Latent dims: ' int2str(configuration.latentDim)]);
 end
 
-configuration.numFilters                    = 256;%64;
+configuration.numFilters                    = 256;
 if nargin > 3
     configuration.numFilters = varargin{2};
     disp(['# filters: ' int2str(configuration.numFilters)]);

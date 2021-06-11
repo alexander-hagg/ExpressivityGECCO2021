@@ -1,5 +1,7 @@
 function validInds = validate(genomes,d)
 %validate - Validate individuals
+% Can be used to add validation of individuals to enforce constraints or
+% prevent faulty, disallowed solutions
 %
 % Syntax:  validInds = validate(genomes,d)
 %

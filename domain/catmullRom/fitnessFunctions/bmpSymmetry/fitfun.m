@@ -1,4 +1,4 @@
-function [fitness,phenotypes,rawFitness] = fitfun(input,d)
+function [fitness,phenotypes,rawFitness] = fitfun(genomes,d)
 %fitfun - "ui compare to user selected shapes" fitness function
 % Fitness is normalized between 0 and 1
 %
@@ -9,9 +9,10 @@ function [fitness,phenotypes,rawFitness] = fitfun(input,d)
 %    d              - cell - Domain configuration.
 %
 % Outputs:
-%    fitness        - [Nx1] - Validation flags
+%    fitness        - [Nx1] - fitness
 %    phenotypes     - cell[Nx1] - phenotypes (to prevent recalculating
 %                                 of phenotypes, we offer them back here
+%    rawFitness     - [Nx1] - unadjusted fitness value
 %
 %
 % Author: Alexander Hagg
@@ -20,26 +21,21 @@ function [fitness,phenotypes,rawFitness] = fitfun(input,d)
 % Jul 2019; Last revision: 15-Aug-2019
 %
 %------------- BEGIN CODE --------------
-if isempty(input); fitness = []; polygons = []; rawFitness = []; return; end
+if isempty(genomes); fitness = []; polygons = []; rawFitness = []; return; end
 
 visualization = false; % Set to true to visualize each fitness evaluation
 
 % Create bitmaps if input is in parameter space
-if ~iscell(input)
-    phenotypes = d.getPhenotype(input);
+if ~iscell(genomes)
+    phenotypes = d.getPhenotype(genomes);
 else
-    phenotypes = input;
+    phenotypes = genomes;
 end
 
 logicalPhenotypes = phenotypes;
 
 for i=1:length(phenotypes)
     if ~islogical(phenotypes{i})
-        %if max(phenotypes{i}(:)) < 0.5
-        %    meanDistanceDiagonals(i) = nan;
-        %    symmetryFitness(i) = nan;
-        %    continue;
-        %end
         logicalPhenotypes{i} = imbinarize(phenotypes{i},0.9*max(phenotypes{i}(:)));
     end
     [B,L] = bwboundaries(logicalPhenotypes{i},'noholes');
@@ -65,8 +61,6 @@ for i=1:length(phenotypes)
         centerX = round(mean(row));
         % Center around center of mass
         boundary = boundary-[centerX centerY];
-        %normalize boundary coordinates for fitness function
-        %normBoundary = mapminmax(boundary',-1,1)';
 
         %%
         if ~mod(size(boundary,1),2)==0; boundary(end,:) = []; end % Make even number # points

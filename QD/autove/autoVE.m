@@ -1,7 +1,19 @@
-function [map,configs,stats] = autoVE(observations,p,d,varargin)
+function [map,p,stats] = autoVE(observations,p,d,varargin)
 %AUTOVE
 % Main run script of autoVE algorithm
 %
+% Syntax: [map,configs,stats] = autoVE(observations,p,d,varargin)
+%
+% Inputs:
+%   observations    - [NXM] - observations/genomes
+%   p               - struct - Voronoi-Elites configuration
+%   d               - struct - domain configuration
+%
+% Outputs:
+%   map             - struct - population archive
+%   p               - struct - Voronoi-Elites configuration
+%   stats           - struct - statistics
+
 % Author: Alexander Hagg
 % Bonn-Rhein-Sieg University of Applied Sciences (HBRS)
 % email: alexander.hagg@h-brs.de
@@ -34,7 +46,6 @@ if p.display.illu
     fitcolor = [0 1 0].*fits + [1 0 0].*(1-fits); fitcolor = discretize(fitcolor,0:0.25:1)./5;
     showPhenotype(observations,d,figPhenotypes,features,fitcolor); drawnow;
 end
-configs = p;
 
 % 2. Illuminate with QD
 disp('Illuminate latent space with QD');

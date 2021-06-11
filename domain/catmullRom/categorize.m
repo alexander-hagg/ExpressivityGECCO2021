@@ -1,6 +1,21 @@
 function [features,unnormalizedFeatures] = categorize(polygons,d)
-%CATEGORIZESYMMETRY Summary of this function goes here
-%   Detailed explanation goes here
+%CATEGORIZE Determine features for Catmull-Rom artifacts
+%
+% Syntax: [features,unnormalizedFeatures] = categorize(polygons,d)
+%
+% Inputs:
+%   polygons               - struct - Polygons
+%   d                      - struct - Domain configuration
+%
+% Outputs:
+%   features               - [NxF] - normalized feature values [0-1]
+%   unnormalizedFeatures   - [NxF] - unnormalized feature values
+
+% Author: Alexander Hagg
+% Bonn-Rhein-Sieg University of Applied Sciences (HBRS)
+% email: alexander.hagg@h-brs.de
+% Nov 2019; Last revision: 11-Jun-2021
+
 for i=1:length(polygons)
     if ~isa(polygons{i},'double')
         pgon = simplify(polygons{i});

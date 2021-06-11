@@ -3,11 +3,12 @@ function [axHandle,phenotypes,ctlPts] = showPhenotype(genomes,d,phenoDistMult,va
 %                multiple phenotypes that are positioned on predefined placement positions.
 %                Yes, this visualization script does too many things at the same time.
 %
-% Syntax:   showPhenotype(genomes,d,varargin)
+% Syntax:   showPhenotype(genomes,d,phenoDistMult,varargin)
 %
 % Inputs:
-%    figHandle      - [1] - figure handle
+%    figHandle      - [h] - figure handle
 %    d              - struct - Domain description struct
+%    phenoDistMult  - [1] - placement coordinate multiplier
 %
 % Optional Inputs:
 %    varargin{1}    - [NxM] - genomes
@@ -61,7 +62,6 @@ end
 
 %%
 placement(:,2) = -placement(:,2);
-%placement =  phenoDistMult * mapminmax(placement',0,1)';
 placement =  phenoDistMult * placement;
 [phenotypes,ctlPts] = d.getPhenotype(genomes);
 hold(axHandle,'off');

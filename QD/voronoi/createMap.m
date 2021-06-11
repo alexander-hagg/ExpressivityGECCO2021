@@ -1,18 +1,14 @@
 function map = createMap(d, p, varargin)
 %createMap - Defines map struct and feature space cell divisions
 %
-% Syntax:  [map, edges] = createMap(featureResolution, genomeLength)
+% Syntax:  map = createMap(d, p, varargin)
 %
 % Inputs:
-%    featureResolution  - [1X1] - Length of genome
-%    maxBins            - [1X1] - Maximum number of bins
-%    competeDistance    - [1X1] - Distance within which individuals compete
+%    d                  - struct - domain configuration
+%    p                  - struct - Voronoi-Elites configuration
 %
 % Outputs:
 %    map  - struct with [M(1) X M(2)...X M(N)] matrices for fitness, etc
-%       edges               - {1XN} cell of partitions for each dimension
-%       fitness, drag, etc  - [M(1) X M(2) X M(N)] matrices of scalars
-%       genes               - [M(1) X M(2) X M(N) X genomeLength]
 %
 % Example: 
 

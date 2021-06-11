@@ -1,15 +1,17 @@
 function [axHandle, imageHandle, cHandle] = viewMap(map, mapValueStr, d, varargin)
 %VIEWMAP - View Map
 %
-% Syntax:  [figHandle, imageHandle, cHandle] = viewMap(mapMatrix, d, varargin)
+% Syntax:  [axHandle, imageHandle, cHandle] = viewMap(map, mapValueStr, d, varargin)
 %
 % Inputs:
-%   mapMatrix   - [RXC]  - scalar value in each bin (e.g. fitness)
+%   map         - struct - feature map
+%   mapValueStr - string - indicates which value from the map is displayed
 %   d           - struct - Domain definition
 %
 % Outputs:
-%   figHandle   - handle of resulting figure
+%   axHandle    - handle of resulting axis object
 %   imageHandle - handle of resulting map image
+%   cHandle     - handle of colorbar
 %
 %
 % Other m-files required: none
@@ -30,11 +32,11 @@ if nargin > 3; axHandle = varargin{1}; else; figure; axHandle = gca;end
 elites = map.features;
 
 if size(elites,2) > 2
-    [COEFF, SCORE, LATENT, TSQUARED, EXPLAINED] = pca(elites);
+    [~, SCORE] = pca(elites);
     elites = SCORE(:,[1 2]);
 end
 
-[elites,ids] = unique(elites,'rows');
+[elites] = unique(elites,'rows');
 value = eval(['map.' mapValueStr '(ids)']);
 hold(axHandle,'off');
 h = imagesc(axHandle,1);delete(h);

@@ -1,14 +1,25 @@
-function config = autoVEParamSet(mapDefaults,AEDefaults)
+function p = autoVEParamSet(mapDefaults,AEDefaults)
+%AUTOVEPARAMSET
+% Auto-Voronoi-Elites configuration
+%
+% Syntax: config = autoVEParamSet(mapDefaults,AEDefaults)
+%
+% Inputs:
+%   mapDefaults               - struct - VE configuration
+%   AEDefaults                - struct - Autoencoder configuration
+%
+% Outputs:
+%   p          - struct - configuration (p)
 
-config.map                           = mapDefaults;
-config.model                         = AEDefaults;
-config.map.numInitSamples            = 512;
+p.map                           = mapDefaults;
+p.model                         = AEDefaults;
+p.map.numInitSamples            = 512;
 
-config.mutSelection                  = 0.1;
-config.retryInvalid                  = true;
+p.mutSelection                  = 0.1;
+p.retryInvalid                  = true;
 
 % Visualization and data management
-config.display.illu                 = false;
-config.display.illuMod              = 1;
+p.display.illu                 = false;
+p.display.illuMod              = 1;
 end
 

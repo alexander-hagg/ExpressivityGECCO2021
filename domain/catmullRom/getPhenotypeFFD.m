@@ -2,14 +2,15 @@ function [shapes,ctlPts] = getPhenotypeFFD(genomes,base)
 %function [polyshapes,booleanMap,pixelCoordinates,flatbooleanMap] = getPhenotypeFFD(genomes,base,varargin)
 %getPhenotype - Express one or more genomes
 %
-% Syntax:  polyshapes = getPhenotype(genomes,d)
+% Syntax:  polyshapes = getPhenotype(genomes,base)
 %
 % Inputs:
 %    genomes        - [NxM] - N genomes with dof = M
-%    d              - struct - Domain description struct
+%    base           - [Cx1] - Base shape parameters
 %
 % Outputs:
-%    polyshapes          - cell[Nx1] - Cell array containing all polyshapes
+%    shapes         - cell[Nx1] - Cell array containing all polyshapes
+%    ctlPts         - control points, exported for visualization purposes
 %
 %
 % Author: Alexander Hagg

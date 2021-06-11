@@ -1,4 +1,5 @@
 function [zSampled, zMean, zLogvar, zOrg] = sampling(encoderNet, x)
+
 compressed = forward(encoderNet, x);
 d = size(compressed,1)/2;
 zMean = compressed(1:d,:);

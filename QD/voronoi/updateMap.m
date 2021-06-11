@@ -1,15 +1,16 @@
-function map = updateMap(replaced,replacement,map,fitness,genes,features,extraMapValues,values)
+function map = updateMap(replaced,replacement,map,fitness,genes,features,extraMapValues,varargin)
 %updateMap - Replaces all values in a set of map cells
 %
-% Syntax:  map = updateMap(replaced,replacement,map,fitness,drag,lift,children)
+% Syntax:  map = updateMap(replaced,replacement,map,fitness,genes,features,extraMapValues,varargin)
 %
 % Inputs:
-%   replaced    - [1XM]  - linear index of map cells to be replaced
-%   replacement - [1XM]  - linear index of children values to place in map
-%   map         - struct - population archive
-%   fitness     - [1XN]  - Child fitness
-%   genes       - [NXD]  - Child genomesextraMapValues
-%   values      - [1XN]  - extra values of interest, e.g. 'cD'
+%   replaced            - [1XM]  - linear index of map cells to be replaced
+%   replacement         - [1XM]  - linear index of children values to place in map
+%   map                 - struct - population archive
+%   fitness             - [1XN]  - Child fitness
+%   genes               - [NXD]  - Child genomes
+%   features            - [FxN]  - Child features 
+%   extraMapValues      - [1XN]  - extra values of interest
 %
 % Outputs:
 %   map         - struct - population archive

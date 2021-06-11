@@ -18,7 +18,7 @@ p.nGens                     = 2^10;     % number of generations
 p.nChildren                 = 2^5;      % number of children per generation
 p.mutSigma                  = 0.1;      % mutation drawn from Gaussian distribution with this \sigma
 p.maxBins                   = 512;    
-p.extraMapValues            = {};       % user defined metrics per solution
+p.extraMapValues            = {};       % user defined metrics per solution (string name)
 
 end
 

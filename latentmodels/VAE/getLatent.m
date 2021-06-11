@@ -1,4 +1,5 @@
 function zMean = getLatent(XTest,model)
+
 if iscell(XTest)
     XBatch = cat(4,XTest{:});
 else
@@ -6,7 +7,7 @@ else
 end
 XBatch = dlarray(single(XBatch), 'SSCB');
 
-executionEnvironment = "gpu"; %auto cpu gpu
+executionEnvironment = "auto"; %OPTIONS: auto cpu gpu
 
 if (executionEnvironment == "auto" && canUseGPU) || executionEnvironment == "gpu"
     XBatch = gpuArray(XBatch);
